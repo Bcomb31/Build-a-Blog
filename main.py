@@ -23,7 +23,7 @@ class Blog(db.Model):
         '''
         self check
         '''
-        if self.title and self.body and self.created:
+        if self.title and self.body:
             return True
         else:
             return False
@@ -38,13 +38,13 @@ def index():
 
 @app.route('/blog')
 def display_blog_entries():
-
+    entry_id = request.args.get('id')
     if (entry_id):
         entry = Blog.query.get(entry_id)
         return render_template('single_blog.html', title="Add a Blog Entry", entry=entry)
-
+    sort = request.args.get('sort')
     if (sort=="newest"):
-        all_entries = Blog.query.order_by(Blog.created.desc()).all()
+        all_entries = Blog.query.order_by(Blog.desc()).all()
     else:
         all_entries = Blog.query.all()   
     return render_template('blog.html', title="All Entries", all_entries=all_entries)
@@ -55,9 +55,9 @@ def new_post():
     if request.method == 'POST':
         new_title = request.form['title']
         new_body = request.form['body']
-        new_post = Blog(title, body)
+        new_post = Blog(new_title, new_body)
 
-        if post.is_valid():
+        if new_post.is_valid():
             db.session.add(new_post)
             db.session.commit()
             url = "/blog?id=" + str(new_post.id)

@@ -1,17 +1,22 @@
 {% extends "base.html" %}
-	
 
-	{% block content %}
-	    <h1>All Blog Entries</h1>
+
+    {% block content %}
+    <style>
+    span.color {
+               color: red;
+    }
+    </style>
+	    <h1><center><span class="color">Build a Blog</h1>
 	    <ul>
 	        {% for entry in all_entries %}
-	            <li>
-	                <h2>
-	                    <a href="/blog?id={{ entry.id }}">{{ entry.title }}</a>
-	                </h2>
-	                <p>{{ entry.body }}</p>
-	                <p>{{ entry.created }}</p>
-	            </li>
+	    
+	            <h2>
+	            <a href="/blog?id={{ entry.id }}">{{ entry.title }}</a>
+	            </h2>
+	            <p>{{ entry.body }}</p>
+	            <p>{{ entry.created }}</p>    
+	            
 	        {% endfor %}
 	    </ul>
 	{% endblock %}

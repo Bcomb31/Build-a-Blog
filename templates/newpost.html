@@ -4,19 +4,27 @@
 
 	
 
-	{% block content %}
-	<h1>Add a Blog Entry</h1>
+    {% block content %}
+    <style>
+    span.color {
+               color: rgb(0, 255, 55);
+    }
+            </style>
+	<h1><center><span class="color">Add a Blog Entry</h1>
 	<form action="/newpost" method="post">
 	
 
-	        <label for="title_field">Your Title</label>
-	        <input id="title_field" name="title" type="text" value="{{ new_title }}">
-	
+        <label for="title_field">Title for your new blog:</label>
+            <br>
+                <input id="title_field" name="title" type="text" value="{{ new_title }}">
+            </br>
+        <br>
+        </br>
 
-	        <label for="body_field">Content</label>
-	        <textarea rows="4" cols="50" id="body_field" name="body" >{{ new_body }}</textarea>
-	
-
-	    <input id="submit_button" type="submit" value="Save">
+        <label for="body_field">Your new blog:</label>
+           <br>
+               <textarea rows="7" cols="30" id="body_field" name="body" style="border-top-style: solid;margin-top: 10px;">{{ new_body }}</textarea>
+           </br>
+	           <input id="submit_button" type="submit" value="Add entry">
 	</form>
 	{% endblock %}

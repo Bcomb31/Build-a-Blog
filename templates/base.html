@@ -2,15 +2,13 @@
 	<html>
 	    <head>
 	        <title>{{title}}</title>
-	        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+	        
 	    </head>
 	<body>
 	    <!-- main element is a flexbox  -->
 	    <main>
 	        <nav>
-	            <a href='/blog'>List all entries<br />(oldest-first)</a>
-	            <a href='/blog?sort=newest'>List all entries<br />(newest-first)</a>
-	            <a href='/newpost'>Create new entry</a>
+                <a href='/'>Main Blog Page</a> <a href='/newpost' style="margin-left: 10px;">Add a Blog Entry</a>
 	        </nav>
 	
 
